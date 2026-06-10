@@ -1,0 +1,115 @@
+/* =========================================================================
+   CV Forge · Sistema de Diseño — Design Tokens
+   Una sola fuente de verdad para color, tipografía, espaciado y elevación.
+   ========================================================================= */
+
+:root {
+  /* ---- Paleta base (dark premium) ---- */
+  --bg-0: #0a0e1a; /* fondo más profundo */
+  --bg-1: #0e1424; /* fondo app */
+  --bg-2: #131a2e; /* superficies */
+  --bg-3: #1a2236; /* superficies elevadas */
+
+  /* ---- Glassmorphism ---- */
+  --glass-bg: rgba(22, 30, 51, 0.55);
+  --glass-bg-strong: rgba(26, 35, 60, 0.78);
+  --glass-border: rgba(148, 163, 199, 0.16);
+  --glass-border-strong: rgba(148, 163, 199, 0.28);
+  --glass-blur: 18px;
+
+  /* ---- Marca / acento ---- */
+  --brand-50: #eef2ff;
+  --brand-300: #a5b4fc;
+  --brand-400: #818cf8;
+  --brand-500: #6366f1;
+  --brand-600: #4f46e5;
+  --brand-700: #4338ca;
+  --accent-cyan: #22d3ee;
+  --accent-teal: #2dd4bf;
+  --accent-violet: #a78bfa;
+  --accent-pink: #f472b6;
+
+  /* ---- Gradientes ---- */
+  --grad-brand: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #22d3ee 100%);
+  --grad-brand-soft: linear-gradient(135deg, rgba(99, 102, 241, 0.18), rgba(34, 211, 238, 0.12));
+  --grad-aurora: radial-gradient(1200px 600px at 10% -10%, rgba(99, 102, 241, 0.22), transparent 60%),
+    radial-gradient(1000px 600px at 110% 10%, rgba(34, 211, 238, 0.16), transparent 55%),
+    radial-gradient(900px 700px at 50% 120%, rgba(167, 139, 250, 0.14), transparent 60%);
+
+  /* ---- Texto ---- */
+  --text-1: #f1f5fb; /* principal */
+  --text-2: #c2cbe0; /* secundario */
+  --text-3: #8b97b5; /* terciario / muted */
+  --text-on-brand: #ffffff;
+
+  /* ---- Estados semánticos ---- */
+  --success: #34d399;
+  --success-bg: rgba(52, 211, 153, 0.12);
+  --warning: #fbbf24;
+  --warning-bg: rgba(251, 191, 36, 0.12);
+  --danger: #f87171;
+  --danger-bg: rgba(248, 113, 113, 0.12);
+  --info: #38bdf8;
+  --info-bg: rgba(56, 189, 248, 0.12);
+
+  /* ---- Tipografía ---- */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Sora', 'Inter', system-ui, sans-serif;
+  --font-serif: Georgia, 'Times New Roman', 'Times', serif;
+  --font-mono: 'SFMono-Regular', 'JetBrains Mono', Consolas, monospace;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.8125rem;
+  --fs-base: 0.9375rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem;
+  --fs-2xl: 1.75rem;
+  --fs-3xl: 2.25rem;
+  --fs-4xl: 3rem;
+
+  --lh-tight: 1.15;
+  --lh-snug: 1.35;
+  --lh-normal: 1.55;
+
+  /* ---- Espaciado (escala 4px) ---- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.25rem;
+  --sp-6: 1.5rem;
+  --sp-8: 2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+
+  /* ---- Radios ---- */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 22px;
+  --r-pill: 999px;
+
+  /* ---- Sombras / elevación ---- */
+  --sh-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --sh-md: 0 6px 18px rgba(0, 0, 0, 0.35);
+  --sh-lg: 0 18px 48px rgba(0, 0, 0, 0.45);
+  --sh-glow: 0 0 0 1px rgba(99, 102, 241, 0.4), 0 8px 32px rgba(99, 102, 241, 0.35);
+  --sh-inset: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  /* ---- Movimiento ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --t-fast: 140ms;
+  --t-base: 220ms;
+  --t-slow: 320ms;
+
+  /* ---- Layout ---- */
+  --sidebar-w: 264px;
+  --topbar-h: 64px;
+  --content-max: 1180px;
+  --z-toast: 1000;
+  --z-modal: 900;
+  --z-sticky: 100;
+}

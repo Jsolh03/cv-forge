@@ -1,0 +1,173 @@
+/* =========================================================================
+   Plantillas de CV — estilos de "papel" A4 y reglas de impresión.
+   El renderizado en pantalla simula una hoja A4; @media print produce el PDF.
+   ========================================================================= */
+
+:root {
+  --paper-w: 794px;   /* A4 a 96dpi */
+  --paper-pad: 56px;
+  --cv-ink: #1a1a1a;
+  --cv-muted: #555;
+  --cv-rule: #d0d0d0;
+}
+
+.paper {
+  width: var(--paper-w);
+  max-width: 100%;
+  min-height: 1123px; /* A4 */
+  margin: 0 auto;
+  background: #ffffff;
+  color: var(--cv-ink);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.cv {
+  padding: var(--paper-pad);
+  box-sizing: border-box;
+}
+
+.cv * { line-height: 1.4; }
+.cv ul { list-style: none; }
+
+/* ---------- Plantilla HARVARD (serif, clásica) ---------- */
+.cv--harvard { font-family: Georgia, 'Times New Roman', serif; color: #111; }
+.cv--harvard .cv-name {
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.cv--harvard .cv-headline { text-align: center; font-style: italic; color: #333; margin-top: 2px; font-size: 13px; }
+.cv--harvard .cv-contact {
+  text-align: center;
+  font-size: 11.5px;
+  color: #333;
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 10px;
+}
+.cv--harvard .cv-section { margin-top: 18px; }
+.cv--harvard .cv-section__title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1.5px solid #111;
+  padding-bottom: 3px;
+  margin-bottom: 8px;
+}
+.cv--harvard .cv-entry { margin-bottom: 11px; }
+.cv--harvard .cv-entry__top { display: flex; justify-content: space-between; gap: 12px; }
+.cv--harvard .cv-entry__role { font-weight: 700; font-size: 13px; }
+.cv--harvard .cv-entry__org { font-style: italic; font-size: 12.5px; }
+.cv--harvard .cv-entry__meta { font-size: 11.5px; color: #444; white-space: nowrap; text-align: right; }
+.cv--harvard .cv-bullets { margin: 5px 0 0 0; padding-left: 16px; }
+.cv--harvard .cv-bullets li { font-size: 12px; margin-bottom: 3px; position: relative; padding-left: 12px; }
+.cv--harvard .cv-bullets li::before { content: '•'; position: absolute; left: 0; }
+.cv--harvard .cv-summary { font-size: 12px; text-align: justify; }
+.cv--harvard .cv-inline { font-size: 12px; }
+
+/* ---------- Plantilla ATS (sans-serif, parseable) ---------- */
+.cv--ats { font-family: Arial, 'Inter', Helvetica, sans-serif; color: #1a1a1a; }
+.cv--ats .cv-name { font-size: 24px; font-weight: 700; }
+.cv--ats .cv-headline { font-size: 13.5px; color: #2a2a2a; margin-top: 2px; font-weight: 600; }
+.cv--ats .cv-contact {
+  font-size: 11.5px;
+  color: #333;
+  margin-top: 7px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 14px;
+}
+.cv--ats .cv-contact span { display: inline-flex; align-items: center; gap: 4px; }
+.cv--ats .cv-section { margin-top: 16px; }
+.cv--ats .cv-section__title {
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #1a1a1a;
+  border-bottom: 1px solid #999;
+  padding-bottom: 3px;
+  margin-bottom: 8px;
+}
+.cv--ats .cv-entry { margin-bottom: 11px; }
+.cv--ats .cv-entry__top { display: flex; justify-content: space-between; gap: 12px; }
+.cv--ats .cv-entry__role { font-weight: 700; font-size: 13px; }
+.cv--ats .cv-entry__org { font-weight: 600; font-size: 12.5px; color: #333; }
+.cv--ats .cv-entry__meta { font-size: 11.5px; color: #555; white-space: nowrap; text-align: right; }
+.cv--ats .cv-bullets { margin: 5px 0 0 0; padding-left: 18px; }
+.cv--ats .cv-bullets li { font-size: 12px; margin-bottom: 3px; list-style: disc; }
+.cv--ats .cv-summary { font-size: 12px; }
+.cv--ats .cv-skills { display: flex; flex-wrap: wrap; gap: 5px 8px; }
+.cv--ats .cv-skill {
+  font-size: 11.5px;
+  background: #f0f1f4;
+  border: 1px solid #dde;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.cv--ats .cv-inline { font-size: 12px; }
+
+/* ---------- Wrapper de previsualización en pantalla ---------- */
+.preview-stage {
+  background:
+    repeating-linear-gradient(45deg, rgba(148,163,199,0.04) 0 10px, transparent 10px 20px);
+  border-radius: var(--r-lg);
+  padding: var(--sp-6);
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+}
+.preview-stage--zoom { transform-origin: top center; }
+
+/* ---------- IMPRESIÓN ----------
+   Aislamiento por `visibility` (no `display`). Ocultar un ancestro con
+   display:none impediría renderizar la hoja aunque el hijo tenga display:block.
+   visibility se hereda pero puede sobrescribirse por elemento, así que ocultamos
+   todo y volvemos a mostrar solo la cadena del CV. El texto sale VECTORIAL y
+   seleccionable → parseable por sistemas ATS. */
+@media print {
+  @page { size: A4; margin: 12mm; }
+
+  html, body { background: #fff !important; }
+  body::before { display: none !important; }
+
+  /* Oculta todo visualmente, conservando el layout de la cadena de ancestros */
+  body * { visibility: hidden !important; }
+
+  /* Vuelve a mostrar solo el CV */
+  .print-root, .print-root * { visibility: visible !important; }
+
+  /* Saca el CV del flujo y lo ancla a la esquina de la página */
+  .print-root {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Neutraliza decoraciones de pantalla en el papel */
+  .preview-stage {
+    padding: 0 !important;
+    background: none !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+  .paper {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+    min-height: auto !important;
+    margin: 0 !important;
+    transform: none !important; /* ignora el zoom de previsualización al imprimir */
+  }
+  .cv, .cover-letter { padding: 0 !important; }
+
+  .cv-entry, .cv-section { page-break-inside: avoid; }
+}

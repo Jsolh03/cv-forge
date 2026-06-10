@@ -1,0 +1,101 @@
+/* =========================================================================
+   Formularios de CV + editores de items
+   ========================================================================= */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4);
+}
+.form-grid--3 { grid-template-columns: 1fr 1fr 1fr; }
+.form-grid .span-2 { grid-column: 1 / -1; }
+@media (max-width: 720px) {
+  .form-grid, .form-grid--3 { grid-template-columns: 1fr; }
+}
+
+.item-card {
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-md);
+  padding: var(--sp-4);
+  background: rgba(10, 14, 26, 0.4);
+  transition: border-color var(--t-base) var(--ease-out);
+  animation: fade-in var(--t-base) var(--ease-out) both;
+}
+.item-card:hover { border-color: var(--glass-border-strong); }
+.item-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--sp-3);
+}
+.item-card__index {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-weight: 700;
+  color: var(--text-2);
+  font-size: var(--fs-sm);
+}
+.item-card__dot {
+  width: 22px; height: 22px;
+  border-radius: 7px;
+  background: var(--grad-brand-soft);
+  border: 1px solid var(--glass-border);
+  display: grid; place-items: center;
+  font-size: var(--fs-xs);
+  color: var(--brand-300);
+}
+
+/* Bullets editor */
+.bullet-row {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: flex-start;
+  margin-bottom: var(--sp-2);
+}
+.bullet-row__marker {
+  margin-top: 11px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--brand-400);
+  flex: none;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-sm);
+  color: var(--text-2);
+  cursor: pointer;
+  user-select: none;
+}
+.checkbox input {
+  width: 18px; height: 18px;
+  accent-color: var(--brand-500);
+  cursor: pointer;
+}
+
+.section-actions { display: flex; justify-content: center; margin-top: var(--sp-4); }
+
+.skill-input-row { display: flex; gap: var(--sp-2); }
+
+/* Completeness meter */
+.completeness {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+.completeness__bar {
+  flex: 1;
+  height: 8px;
+  border-radius: var(--r-pill);
+  background: rgba(148, 163, 199, 0.16);
+  overflow: hidden;
+}
+.completeness__fill {
+  height: 100%;
+  border-radius: var(--r-pill);
+  background: var(--grad-brand);
+  transition: width var(--t-slow) var(--ease-out);
+}
